@@ -2,7 +2,7 @@ name: AirQ Notifier
 
 on:
   schedule:
-    - cron: "0 * * * *"  # jalan tiap jam
+    - cron: "*/5 * * * *"  # jalan tiap 5 menit
   workflow_dispatch:     # bisa run manual dari GitHub UI
 
 jobs:
