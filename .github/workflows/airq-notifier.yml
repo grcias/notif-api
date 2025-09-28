@@ -1,0 +1,33 @@
+name: AirQ Notifier
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # jalan tiap jam
+  workflow_dispatch:     # bisa run manual dari GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install requests pandas google-api-python-client google-auth
+
+      - name: Run notification script
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          AIRVISUAL_API_KEY: ${{ secrets.AIRVISUAL_API_KEY }}
+          ULTRAMSG_TOKEN: ${{ secrets.ULTRAMSG_TOKEN }}
+          ULTRAMSG_INSTANCE: ${{ secrets.ULTRAMSG_INSTANCE }}
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+        run: |
+          echo "$SERVICE_ACCOUNT_JSON" > service-account-key.json
+          python notification.py
