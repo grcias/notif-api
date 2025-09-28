@@ -152,9 +152,7 @@ class AirQualityMonitor:
     def get_aqi_message(self, city: str, aqi: int) -> Optional[str]:
         """Generate AQI message"""
         if 101 <= aqi <= 200:
-            return f"""⚠️ Hey there!
-
-The air in {city} isn't looking good 🚩 AQI {aqi} – Unhealthy.
+            return f"""⚠️ Hey there! The air in {city} isn't looking good 🚩 AQI {aqi} – Unhealthy.
 Better to stay indoors and avoid heavy outdoor activities.
 
 👉 Live dashboard:
