@@ -153,6 +153,7 @@ class AirQualityMonitor:
         """Generate AQI message"""
         if 101 <= aqi <= 200:
             return f"""⚠️ Hey there! The air in {city} isn't looking good 🚩 AQI {aqi} – Unhealthy.
+
 Better to stay indoors and avoid heavy outdoor activities.
 
 👉 Live dashboard:
@@ -160,6 +161,7 @@ Better to stay indoors and avoid heavy outdoor activities.
 
         elif 201 <= aqi <= 300:
             return f"""⚠️ Attention! The air in {city} is 🚩 AQI {aqi} – Very Unhealthy.
+
 Safer to stay indoors and wear N95 if you go out.
 
 👉 Live dashboard:
@@ -167,6 +169,7 @@ Safer to stay indoors and wear N95 if you go out.
 
         elif aqi >= 301:
             return f"""🛑 ALERT! {city} just reached 🚩 AQI {aqi} – Hazardous.
+
 Stay indoors, avoid going outside, seek medical help if unwell.
 
 👉 Live dashboard:
